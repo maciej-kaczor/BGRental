@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  min_player_count: 1
+  max_player_count: 1
+  deposit: 1.5
+  publication_year: 1
+  rental_price: 1.5
+
+two:
+  name: MyString
+  description: MyText
+  min_player_count: 1
+  max_player_count: 1
+  deposit: 1.5
+  publication_year: 1
+  rental_price: 1.5
