@@ -1,6 +1,4 @@
 <h1>All Games in library</h1>
-<% @games.each do |game| %>
-    <h4><%= game.name %></h4>
-    <p><%= game.description %> </p>
-    <p><%= game.min_player_count %> - <%= game.max_player_count %> graczy </p>
-<% end %>
+<ul class="games">
+    <%= render partial: "game", collection: @games %>
+</ul>

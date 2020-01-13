@@ -38,6 +38,11 @@
     </p>
 
     <p>
+    <%= f.label :picture, "Zdjęcie" %>
+    <%= f.file_field :picture, multiple: false, direct_upload: true %>
+    </p>
+
+    <p>
     <%= f.submit "Submit", disable_with: 'Submiting...' %>
     </p>
 
