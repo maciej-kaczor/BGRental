@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :games
+
+  get 'not_implemented', to: 'pages#not_implemented'
 end

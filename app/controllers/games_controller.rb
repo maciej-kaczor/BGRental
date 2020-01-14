@@ -34,6 +34,20 @@ class GamesController < ApplicationController
         end
     end
 
+    def edit
+        @game = Game.find(params[:id])
+    end
+
+    def update
+        @game = Game.find(params[:id])
+        if @game.update_attributes(game_params)
+          redirect_to @game
+        else
+          render 'edit'
+        end
+    end
+    
+
     private 
         def game_params
             params.require(:game).permit(:name, :description, :min_player_count,

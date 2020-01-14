@@ -1,9 +1,16 @@
-<header class="navbar-nav">
-    <ul class="navbar-nav">
+<header class="">
+    <ul class="nav nav-fill menu">
         <li class="nav-item">
-            <%=link_to "Home", root_path(), :class => 'nav-item' %>
-            <%=link_to "Wszystkie gry", games_path(), :class => 'nav-item' %>
-            <%=link_to "Dodaj grę", new_game_path(), :class => 'nav-item' %>
+            <%=link_to "Home", root_path(), :class => 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Wszystkie gry", games_path(), :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Dodaj grę", new_game_path(), :class => 'nav-link' %>
+        </li>
+        <li class="nav-item">
+            <%=link_to "Zaloguj się", not_implemented_path(), :class => 'nav-link' %>
         </li>
     <ul>
 </header>

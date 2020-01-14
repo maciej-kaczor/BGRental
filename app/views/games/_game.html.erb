@@ -1,6 +1,13 @@
-<li>
-    <h4> <%= link_to game.name, game_path(game.id) %> </h4> 
-    <br> 
-    <%= image_tag game.picture, size: "180x180" %>
-</li>
+<div class="card game-card" style="width:260px; margin:20px">
+    <%= image_tag game.picture, :class => 'card-img-top' %>
+    <div class="card-body">
+        <h5 class="card-title">
+            <%= game.name %>
+        </h5>
+        <p class="card-text"><%= game.description %> </p>
+        <%= link_to "Więcej", game_path(game.id), :class => 'card-link' %>
+        <%= link_to "Edytuj", edit_game_path(game.id), :class => 'card-link' %>
+        <%= link_to "Usuń", game_path(game.id), method: :delete, :class => 'card-link' %>
+    </div>
+</div>
     
