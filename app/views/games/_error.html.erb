@@ -1,0 +1,7 @@
+<% if @game.errors[:max_player_count].any? %>
+    <% @game.errors[:max_player_count].each do |msg| %>
+        <div class="alert alert-danger validation-error" role="alert">
+            <h6><%= msg %></h6>
+        </div>
+    <% end %>
+<% end %>
