@@ -8,4 +8,4 @@
 
 roles = Role.create([{name: 'Admin'}, {name: 'Pracownik'}, {name: "Użytkownik"}])
 admin = User.create(username: 'admin', email: 'none', password: 'admin')
-Permission.create(user: admin, role: roles.first)
+Permission.create(user_id: admin.id, role_id: roles.first.id)

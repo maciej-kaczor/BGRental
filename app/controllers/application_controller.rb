@@ -1,18 +1,25 @@
 class ApplicationController < ActionController::Base
-    private
 
+    private
     def current_user
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def user_role?(role)
-        @permission ||= Permission.find_by_user(current_user)
-        @permission.role == role
+    def user_role?(role_name)
+        if session[:user_id]
+            @permission ||= Permission.find_by_user_id(session[:user_id])
+            @permission.role.name == role_name
+        end
+    end
+
+    def user_role_not?(role_name)
+        if session[:user_id]
+            @permission ||= Permission.find_by_user_id(session[:user_id])
+            @permission.role.name == role_name
+        end
     end
 
     helper_method :current_user
-
-    def authorize
-        redirect_to login_url, alert: "Not authorized" if current_user.nil?
-    end
+    helper_method :user_role?
+    helper_method :user_role_not?
 end
