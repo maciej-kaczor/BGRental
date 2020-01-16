@@ -6,11 +6,28 @@
         <li class="nav-item">
             <%=link_to "Wszystkie gry", games_path(), :class => 'nav-link' %>
         </li>
-        <li class="nav-item">
-            <%=link_to "Dodaj grę", new_game_path(), :class => 'nav-link' %>
-        </li>
-        <li class="nav-item">
-            <%=link_to "Zaloguj się", not_implemented_path(), :class => 'nav-link' %>
-        </li>
+        <% if can? :create, Game  %>
+            <li class="nav-item">
+                <%=link_to "Dodaj grę", new_game_path(), :class => 'nav-link' %>
+            </li>
+        <% end %>
+        <% if can? :rent, Game %>
+            <li class="nav-item">
+                Wypożycz grę
+            </li>
+        <% end %>
+        <% if current_user %>
+            <li class="nav-item"><%= current_user.username %></li>
+            <li class="nav-item">
+                <%=link_to "Wyloguj się", logout_path(), :class => 'nav-link' %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <%=link_to "Zarejestruj się", signup_path(), :class => 'nav-link' %>
+            </li>
+            <li class="nav-item">
+                <%=link_to "Zaloguj się", login_path(), :class => 'nav-link' %>
+            </li>
+        <% end %>
     <ul>
 </header>
