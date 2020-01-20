@@ -1,7 +1,13 @@
 class GamesController < ApplicationController
+    PAGE_SIZE = 10
 
+    load_and_authorize_resource
+    
     def index
-        @games = Game.all
+        @page = (params[:page] || 0).to_i
+        @all_games = Game.search(params[:search])
+        @games_size = @all_games.size
+        @games = @all_games.offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     end
 
     def create
@@ -52,4 +58,11 @@ class GamesController < ApplicationController
             params.require(:game).permit(:name, :description, :min_player_count,
                 :max_player_count, :publication_year, :deposit, :rental_price, :picture)
         end
+
+        def show_next_page?
+            @page = (params[:page] || 0).to_i + 1
+            @games_count = Game.all.size
+            @page * PAGE_SIZE < @games_count
+        end
+        helper_method :show_next_page?
 end

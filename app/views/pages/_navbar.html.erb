@@ -11,6 +11,16 @@
                 <%=link_to "Dodaj grę", new_game_path(), :class => 'nav-link' %>
             </li>
         <% end %>
+        <% if can? :index, Rental  %>
+            <li class="nav-item">
+                <%=link_to "Wypożyczenia", rentals_path(), :class => 'nav-link' %>
+            </li>
+        <% end %>
+        <% if can? :manage, User  %>
+            <li class="nav-item">
+                <%=link_to "Dodaj użytkownika", new_user_path(), :class => 'nav-link' %>
+            </li>
+        <% end %>
         <% if current_user %>
             <li class="nav-item"><%= current_user.username %></li>
             <li class="nav-item">

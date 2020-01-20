@@ -1,0 +1,16 @@
+<h2>Wypożyczenia</h2>
+<% if can? :index, Rental %>
+    <table>
+        <tr>
+            <th>Gra</th>
+            <th>Data wypożyczenia</th>
+            <th>Data oddania</th>
+            <th>Użytkownik</th>
+            <% if can? :manage, Rental %>
+                <th>Akcja</th>
+            <% end %>
+        </tr>
+        <%= render partial: "rental", collection: @rentals %>
+            
+    </table>
+<% end %>

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_one :permission
     has_one :role, through: :permission
+    has_many :rentals
 
     has_secure_password
 

@@ -1,0 +1,11 @@
+<h2>Wypożyczanie gry</h2>
+<%= form_with(model: [ @game, @game.rentals.build ], local: true) do |form| %>
+    <p>
+        <%= hidden_field_tag(:game_id, @game.id) %>
+        Gra: <%= @game.name %>
+    </p>
+    <%= select_tag(:user_id, options_for_select(@users_array)) %>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

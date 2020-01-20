@@ -1,0 +1,9 @@
+<tr>
+    <td><%= Game.find(rental.game_id).name %></td>
+    <td><%= rental.rent_date %></td>
+    <td><%=  rental.return_date %></td>
+    <td><%= User.find(rental.user_id).email %></td>
+    <% if can? :manage, Rental %>
+        <td><%= link_to 'Zwrot', game_return_path(rental.game_id) %></td>
+    <% end %>
+</tr>

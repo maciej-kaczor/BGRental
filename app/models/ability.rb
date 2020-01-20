@@ -6,13 +6,16 @@ class Ability
   def initialize(user)
     can :read, Game
     if user.present?
-      can :rent, Game
+      can :book, Game
+      can :index, Rental
       if user.role?("Pracownik")
         can :manage, Game
+        can :rent, Game
+        can :manage, Rental
       end
       if user.role?("Admin")
+        can :rent, Game
         can :manage, :all
-        can :access, Admin
       end
     end
     # Define abilities for the passed in user here. For example:

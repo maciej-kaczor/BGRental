@@ -4,10 +4,21 @@
 <p>Rok wydania: <%= @game.publication_year %> </p>
 <p>Kaucja: <%= @game.deposit %></p>
 <p>Cena za dzień wypożyczenia: <%= @game.rental_price %></p>
+<% if @game.picture.attached? %>
  <%= image_tag @game.picture, size: '360x360' %>
- <%= link_to 'Edytuj', edit_game_path(@game.id) %>
- <if can? :book, Game %>
-    <%= link_to 'Zarezerwuj', book_game_path(@game.id) %>
 <% end %>
-
+<% if can? :edit, Game %>
+ <%= link_to 'Edytuj', edit_game_path(@game.id) %>
+<% end %>
+<% if @game.rented? %>
+    <p>Gra jest aktualnie wypożyczona</p>
+    <% if (can? :rent, Game) %>
+        <%= link_to 'Przyjmij zwrot', game_return_path(@game.id) %>
+    <% end %>
+<% else %>
+ <p>Gra dostępna do wypożyczenia</p>
+    <% if (can? :rent, Game) %>
+        <%= link_to 'Wypożycz', new_game_rental_path(@game.id) %>
+    <% end %>
+<% end %>
 

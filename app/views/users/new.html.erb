@@ -36,6 +36,14 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <% if can? :manage, User %>
+  <div class="field">
+    <%= f.label :role %>
+    <%= select_tag(:role, options_for_select(@roles_array)) %>
+  </div>
+  <% else %>
+    <%= hidden_field_tag(:role, @default_role) %>
+  <% end %>
   <div class="actions"><%= f.submit "Zarejestruj się" %></div>
 <% end %>
 

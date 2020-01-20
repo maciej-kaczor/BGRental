@@ -1,4 +1,23 @@
-<h1 class="games-header">Wszystkie gry</h1>
+<%= form_tag games_path, :method => 'get' do %>
+    Tytuł gry <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Wyszukaj', name: nil %>
+<% end %>
+<% if params[:search] %>
+    <h1 class="games-header">Wyniki wyszukiwania "<%= params[:search] %>" </h1>
+<% else %>
+    <h1 class="games-header">Wszystkie gry</h1>
+<% end %>
 <div class="games">
     <%= render partial: "game", collection: @games %>
 </div>
+<div>
+        <ul class="pager">
+            <li class="previous">
+                <%= link_to_if @page > 0, "<< Previous", games_path(page: @page - 1) %>
+            </li>
+
+            <li class="next">
+                <%= link_to_if show_next_page?, "Next >>", games_path(page: @page + 1) %>
+            </li>
+        </ul>
+    </div>

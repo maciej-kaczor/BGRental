@@ -7,4 +7,8 @@ class PagesController < ApplicationController
     def not_implemented
         
     end
+
+    def unauthorized
+        
+    end
 end

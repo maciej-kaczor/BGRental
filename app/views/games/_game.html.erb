@@ -1,13 +1,17 @@
 <div class="card game-card" style="width:260px; margin:20px">
-    <%= image_tag game.picture, :class => 'card-img-top' %>
+    <% if game.picture.attached? %>
+        <%= image_tag game.picture, :class => 'card-img-top' %>
+    <% end %>
     <div class="card-body">
         <h5 class="card-title">
             <%= game.name %>
         </h5>
         <p class="card-text"><%= game.description %> </p>
         <%= link_to "Więcej", game_path(game.id), :class => 'card-link' %>
-        <%= link_to "Edytuj", edit_game_path(game.id), :class => 'card-link' %>
-        <%= link_to "Usuń", game_path(game.id), method: :delete, :class => 'card-link' %>
+        <% if can? :manage, Game %>
+            <%= link_to "Edytuj", edit_game_path(game.id), :class => 'card-link' %>
+            <%= link_to "Usuń", game_path(game.id), method: :delete, :class => 'card-link' %>
+        <% end %>
     </div>
 </div>
     
