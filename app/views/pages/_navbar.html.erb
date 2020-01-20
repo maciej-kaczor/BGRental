@@ -11,11 +11,6 @@
                 <%=link_to "Dodaj grę", new_game_path(), :class => 'nav-link' %>
             </li>
         <% end %>
-        <% if can? :rent, Game %>
-            <li class="nav-item">
-                Wypożycz grę
-            </li>
-        <% end %>
         <% if current_user %>
             <li class="nav-item"><%= current_user.username %></li>
             <li class="nav-item">

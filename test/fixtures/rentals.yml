@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game: one
+  user: one
+  returned: 
+  return_date: 2020-01-15
+
+two:
+  game: two
+  user: two
+  returned: 
+  return_date: 2020-01-15

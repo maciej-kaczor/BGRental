@@ -12,6 +12,7 @@ class Ability
       end
       if user.role?("Admin")
         can :manage, :all
+        can :access, Admin
       end
     end
     # Define abilities for the passed in user here. For example:

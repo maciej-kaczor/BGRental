@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_15_104402) do
+ActiveRecord::Schema.define(version: 2020_01_15_151953) do
+
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +55,18 @@ ActiveRecord::Schema.define(version: 2020_01_15_104402) do
     t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "returned"
+    t.date "return_date"
+    t.date "rent_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_rentals_on_game_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,9 +79,13 @@ ActiveRecord::Schema.define(version: 2020_01_15_104402) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "permissions", "roles"
   add_foreign_key "permissions", "users"
+  add_foreign_key "rentals", "games"
+  add_foreign_key "rentals", "users"
 end

@@ -46,7 +46,6 @@ class GamesController < ApplicationController
           render 'edit'
         end
     end
-    
 
     private 
         def game_params
