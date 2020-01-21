@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
 
-    # rescue_from CanCan::AccessDenied do |exception|
-    #     respond_to do |format|
-    #         format.html { redirect_to unauthorized_url, notice: exception.message }
-    #     end
-    # end
+    rescue_from CanCan::AccessDenied do |exception|
+        respond_to do |format|
+            format.html { redirect_to unauthorized_url, notice: exception.message }
+        end
+    end
 
     private
     def current_user

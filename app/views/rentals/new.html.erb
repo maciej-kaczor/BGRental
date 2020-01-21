@@ -4,8 +4,9 @@
         <%= hidden_field_tag(:game_id, @game.id) %>
         Gra: <%= @game.name %>
     </p>
+    <%= form.label :user_id, "Użytkownik:" %>
     <%= select_tag(:user_id, options_for_select(@users_array)) %>
     <p>
-        <%= form.submit %>
+        <%= form.submit 'Wypożycz', :class => 'btn btn-primary' %>
     </p>
 <% end %>

@@ -1,53 +1,54 @@
-    <div>
-        <%= render partial: 'error', locals: {errors: @game.errors[:name]} %>
+    <div class="form-section">
         <%= f.label :name, "Tytuł gry" %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :class => @game.errors[:name].any? ? 'is-valid' : 'is-invalid' %>
+        <%= render partial: 'feedback', locals: {errors: @game.errors[:name]} %>
     </div>
 
-    <div>
+    <div class="form-section">
         <%= f.label :description, "Opis" %>
         <%= f.text_area :description %>
     </div>
 
-    <div>
-        <%= render partial: 'error', locals: {errors: @game.errors[:min_player_count]} %>
+    <div class="form-section">
         <%= f.label :min_player_count, "Minimalna liczba graczy" %>
-        <%= f.text_field :min_player_count %>
+        <%= f.text_field :min_player_count, :class => @game.errors[:min_player_count].any? ? 'is-valid' : 'is-invalid' %>
+        <%= render partial: 'feedback', locals: {errors: @game.errors[:min_player_count]} %>
     </div>
 
-    <div>
-        <%= render partial: 'error', locals: {errors: @game.errors[:max_player_count]} %>
+    <div class="form-section">
         <%= f.label :max_player_count, "Maksymalna liczba graczy" %>
-        <%= f.text_field :max_player_count %>
+        <%= f.text_field :max_player_count, :class => @game.errors[:max_player_count].any? ? 'is-valid' : 'is-invalid'%>
+        <%= render partial: 'feedback', locals: {errors: @game.errors[:max_player_count]} %>
     </div>
 
-    <div>
-        <%= render partial: 'error', locals: {errors: @game.errors[:publication_year]} %>
+    <div class="form-section">
         <%= f.label :publication_year, "Rok wydania" %>
-        <%= f.text_field :publication_year %>
+        <%= f.text_field :publication_year, :class => @game.errors[:publication_year].any? ? 'is-valid' : 'is-invalid' %>
+        <%= render partial: 'feedback', locals: {errors: @game.errors[:publication_year]} %>
     </div>
 
-    <div>
+    <div class="form-section">
         <%= render partial: 'error', locals: {errors: @game.errors[:deposit]} %>
         <%= f.label :deposit, "Kaucja" %>
-        <%= f.text_field :deposit %>
+        <%= f.text_field :deposit, :class => @game.errors[:deposit].any? ? 'is-valid' : 'is-invalid' %>
+        <%= render partial: 'feedback', locals: {errors: @game.errors[:deposit]} %>
     </div>
 
-    <div>
-        <%= render partial: 'error', locals: {errors: @game.errors[:rental_price]} %>
+    <div class="form-section">
         <%= f.label :rental_price, "Cena za dzień wypożyczenia" %>
-        <%= f.text_field :rental_price %>
+        <%= f.text_field :rental_price, :class => @game.errors[:rental_price].any? ? 'is-valid' : 'is-invalid' %>
+        <%= render partial: 'feedback', locals: {errors: @game.errors[:rental_price]} %>
     </div>
 
-    <div>
+    <div class="form-section">
         <%= f.label :picture, "Zdjęcie" %>
         <% if :edit_mode? %>
                 <%= image_tag @game.picture if @game.picture.attached? %>
                 </br>
         <% end %>
-        <%= f.file_field :picture, multiple: false, direct_upload: true %>
+        <%= f.file_field :picture, multiple: false, direct_upload: true, :class => 'btn btn-secondary'%>
     </div>
 
-    <div>
-        <%= f.submit "Submit", disable_with: 'Submiting...' %>
+    <div class="form-section">
+        <%= f.submit "Dodaj", disable_with: 'Submiting...', :class => 'btn btn-success' %>
     </div>

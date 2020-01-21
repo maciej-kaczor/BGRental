@@ -1,13 +1,13 @@
 <h2>Wypożyczenia</h2>
 <% if can? :index, Rental %>
-    <table>
+    <table class="table table-striped">
         <tr>
-            <th>Gra</th>
-            <th>Data wypożyczenia</th>
-            <th>Data oddania</th>
-            <th>Użytkownik</th>
+            <th scope="col">Gra</th>
+            <th scope="col">Data wypożyczenia</th>
+            <th scope="col">Data oddania</th>
+            <th scope="col">Użytkownik</th>
             <% if can? :manage, Rental %>
-                <th>Akcja</th>
+                <th scope="col">Akcja</th>
             <% end %>
         </tr>
         <%= render partial: "rental", collection: @rentals %>

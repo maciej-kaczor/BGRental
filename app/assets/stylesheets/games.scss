@@ -28,3 +28,52 @@
     max-width: 400px;
     margin: 10px;
 }
+
+.search-form {
+    margin: 20px;
+    width: 500px;
+    text-align: center;
+}
+
+.form-section {
+    display: flex;
+    margin: 20px;
+
+    label {
+        margin-right: 10px;
+        width: 150px;
+        text-align: center;
+    }
+
+    input, textarea {
+        width: 300px;
+    }
+
+    textarea {
+        height: 200px;
+    }
+}
+
+h1 {
+    text-align: center;
+}
+
+.pager {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    li {
+        margin: 20px;
+        list-style: none;
+    }
+
+    .previous {
+        text-align: left;
+        
+    }
+
+    .next {
+        text-align: right;
+    }
+}

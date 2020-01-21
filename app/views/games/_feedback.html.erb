@@ -1,0 +1,10 @@
+<div class="<%= errors.any? ? 'invalid-feedback' : 'valid-feedback' %> ">
+    <% if errors.any? %>
+        <% errors.each do |msg| %>
+            <%= msg %>
+            <br>
+        <% end %>
+    <% else %>
+        Pole wypełnione poprawnie
+    <% end %>
+</div>
